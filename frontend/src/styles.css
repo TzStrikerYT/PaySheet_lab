@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+.bg-green-pastel {
+    background: #01504A !important;
+}
+
+.bg-green-dark {
+    background: #2f2977 !important;
+}
+
+.text-green-dark {
+    color: #01504A !important;
+}
+
+.text-green-pastel {
+    color: #8076fb !important;
+}
+
+.shadow-hover:hover {
+    box-shadow: #01504A66 0px 5px, #01504A4d 0px 10px;
+}
+
+
+body, html {
+    height: 100%;
+}

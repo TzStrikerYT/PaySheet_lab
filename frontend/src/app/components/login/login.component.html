@@ -1,0 +1,32 @@
+<section class="mt-4 d-flex align-items-center justify-content-center" style="height: 75vh;">
+
+        <div class="d-flex justify-content-center align-items-center">
+
+          <div class="sensor">
+            <div class="p-4 shadow-lg rounded box-login-hover" style="width: 22rem;">
+
+              <h3 class="text-green-dark mb-3 text-center">Iniciar Sesion</h3>
+              <hr class="mb-5 text-green-dark">
+
+              <form #loginForm="ngForm">
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label text-green-dark">Usuario</label>
+                    <input placeholder="Ingresa tu usuario" type="text" class="form-control" #username="ngModel" name="username" [(ngModel)]="userService.slectedUser.username" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label text-green-dark">Contraseña</label>
+                    <input placeholder="Escribe tu contraseña" type="password" class="form-control" id="exampleInputPassword1" name="password" #password="ngModel" [(ngModel)]="userService.slectedUser.password">
+                  </div>
+                  <div class="text-center mt-5">
+                      <a class="btn bg-green-pastel text-white text-center shadow-hover" (click)="login(loginForm)">Iniciar Sesion</a>
+                  </div>
+                </form>
+
+          </div>
+          </div>
+           
+              
+            
+            
+        </div>
+</section>

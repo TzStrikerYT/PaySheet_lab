@@ -1,0 +1,181 @@
+<section class="mt-4">
+  <div class="row w-100">
+    <div class="col-lg-5 py-5 d-flex align-items-center justify-content-center">
+      <div class="py-5 px-4 shadow-lg rounded w-75">
+        <h3 class="text-green-dark mb-3 text-center">Registrar Usuario</h3>
+        <hr class="mb-5 text-green-pastel" />
+
+        <form #userForm="ngForm">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+              >Nombre de usuario</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              name="username"
+              #username="ngModel"
+              [(ngModel)]="userService.slectedUser.username"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+              >Correo Electrónico</label
+            >
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              #email="ngModel"
+              [(ngModel)]="userService.slectedUser.email"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Nombres</label>
+            <input
+              type="text"
+              class="form-control"
+              name="name"
+              #name="ngModel"
+              [(ngModel)]="userService.slectedUser.name"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Apellidos</label>
+            <input
+              type="text"
+              class="form-control"
+              name="lastname"
+              #lastname="ngModel"
+              [(ngModel)]="userService.slectedUser.lastname"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+              >Documento de identidad</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              name="document"
+              #document="ngModel"
+              [(ngModel)]="userService.slectedUser.document"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+              >Salario Asignado</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              name="salary"
+              #salary="ngModel"
+              [(ngModel)]="userService.slectedUser.salary"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+              >Tipo de ARL</label
+            >
+            <select
+              type="text"
+              class="form-control"
+              name="arlType"
+              #arlType="ngModel"
+              [(ngModel)]="userService.slectedUser.arlType"
+              aria-describedby="emailHelp"
+            >
+              <option value="">Selecciona una opción</option>
+              <option value="1">Clase 1</option>
+              <option value="2">Clase 2</option>
+              <option value="3">Clase 3</option>
+              <option value="4">Clase 4</option>
+              <option value="5">Clase 5</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+              >Caja de compensación</label
+            >
+            <select
+              type="text"
+              class="form-control"
+              name="compensationBox"
+              #compensationBox="ngModel"
+              [(ngModel)]="userService.slectedUser.compensationBox"
+              aria-describedby="emailHelp"
+            >
+              <option value="">Selecciona una opción</option>
+              <option value="Compensar">Compensar</option>
+              <option value="Colsubsidio">Colsubsidio</option>
+              <option value="Cafam">Cafam</option>
+            </select>
+          </div>
+          
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Teléfono</label>
+            <input
+              type="number"
+              class="form-control"
+              name="phone"
+              #phone="ngModel"
+              [(ngModel)]="userService.slectedUser.phone"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"
+              >Contraseña</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              name="password"
+              #password="ngModel"
+              [(ngModel)]="userService.slectedUser.password"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Confirmar Contraseña</label>
+            <p
+              class="text-success"
+              *ngIf="
+                userService.slectedUser.password ===
+                  userService.slectedUser.confirmPassword &&
+                userService.slectedUser.password !== ''
+              "
+            >
+              Las contraseñas coinciden
+            </p>
+
+            <input
+              type="password"
+              class="form-control"
+              name="confirmPassword"
+              #confirmPassword="ngModel"
+              [(ngModel)]="userService.slectedUser.confirmPassword"
+            />
+          </div>
+
+          <div class="text-center mt-5">
+            <a
+              class="btn bg-green-pastel text-white text-center shadow-hover"
+              (click)="register(userForm)"
+              >Guardar</a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-lg-7 bg-image"></div>
+  </div>
+</section>
