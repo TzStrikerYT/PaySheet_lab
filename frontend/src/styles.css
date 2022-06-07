@@ -11,6 +11,10 @@
     color: #01504A !important;
 }
 
+.border-green-dark {
+    border: solid 1px #01504A !important;
+}
+
 .text-green-pastel {
     color: #8076fb !important;
 }

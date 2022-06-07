@@ -71,6 +71,35 @@ export class UserService {
     return decoded
   }
 
+  numberSeparators(number: string | number) {
+    if (typeof number === 'number') return number.toLocaleString('es-MX');
+    let value = parseInt(number)
+    return value.toLocaleString('es-MX');
+  }
+
+  bruteSalary(salary: string, arlType: string) {
+    let value = parseInt(salary)
+    let total = value - environment.EPS - environment.COMPENSATION_BOX
+
+    if(arlType === '1') return (total - environment.ARL_TYPE1).toLocaleString('es-MX');
+    if(arlType === '2') return (total - environment.ARL_TYPE2).toLocaleString('es-MX');
+    if(arlType === '3') return (total - environment.ARL_TYPE3).toLocaleString('es-MX');
+    if(arlType === '4') return (total - environment.ARL_TYPE4).toLocaleString('es-MX');
+    if(arlType === '5') return (total - environment.ARL_TYPE5).toLocaleString('es-MX');
+
+    return total
+
+  }
+
+  getArlValue(arlType: string) {
+    if(arlType === '1') return (environment.ARL_TYPE1).toLocaleString('es-MX');
+    if(arlType === '2') return (environment.ARL_TYPE2).toLocaleString('es-MX');
+    if(arlType === '3') return (environment.ARL_TYPE3).toLocaleString('es-MX');
+    if(arlType === '4') return (environment.ARL_TYPE4).toLocaleString('es-MX');
+    if(arlType === '5') return (environment.ARL_TYPE5).toLocaleString('es-MX');
+    return 
+  }
+
 }
 
 

@@ -17,6 +17,10 @@ const userSchema = new Schema(
     isActive: { type: Boolean, default: true },
     admin: { type: Boolean, default: false },
     verified: { type: Boolean, default: false },
+    bank: {type: String, required: true},
+    bankAccount: {type: String, required: true},
+    paymentState: {type: String, default: 'payed'}, // ready - payed 
+    eps: {type: String, reuired: true}
   },
   {
     versionKey: false,

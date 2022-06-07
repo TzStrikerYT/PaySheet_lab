@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { Page404Component } from './components/page404/page404.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ClientComponent } from './components/client/client.component';
+import { PaymentsComponent } from './componets/payments/payments.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ClientComponent } from './components/client/client.component';
     HomeComponent,
     Page404Component,
     AdminComponent,
-    ClientComponent
+    ClientComponent,
+    PaymentsComponent
   ],
   imports: [
     BrowserModule,

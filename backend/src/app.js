@@ -10,10 +10,11 @@ const port = process.env.PORT;
 
 app.use(morgan("dev"));
 app.use(express.json())
-app.use(cors({ origin: ['http://localhost:4200'] }))
+app.use(cors())
 
 // Rutas
 app.use('/api/products', require('./routes/ProductsRoutes'))
 app.use('/api/user', require('./routes/UserRoutes'))
+app.use('/api/payments', require('./routes/PaymentsRoutes'))
 
 app.listen(port, () => console.log(`Ejecutando api en el puerto ${port}`));

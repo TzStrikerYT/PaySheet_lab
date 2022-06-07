@@ -14,6 +14,8 @@ export class User {
   verified: boolean;
   isLogged: boolean;
   confirmPassword: string;
+  isActive: boolean;
+  eps: string;
 
   constructor(
     _id = '',
@@ -30,7 +32,9 @@ export class User {
     admin = false,
     verified=false,
     isLogged = false,
-    confirmPassword = ''
+    confirmPassword = '',
+    isActive = false,
+    eps = ''
   ) {
     this._id = _id;
     this.email = email;
@@ -48,5 +52,7 @@ export class User {
     this.verified = verified
     this.isLogged = isLogged;
     this.confirmPassword = confirmPassword;
+    this.isActive = isActive
+    this.eps = eps
   }
 }

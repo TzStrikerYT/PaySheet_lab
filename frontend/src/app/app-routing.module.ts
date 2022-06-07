@@ -8,16 +8,19 @@ import { Page404Component } from './components/page404/page404.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UserGuard } from './user.guard';
 import { AdminGuard } from './admin.guard';
+import { PaymentsComponent } from './componets/payments/payments.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent, canActivate: [AdminGuard] },
-  { path: 'home', component: HomeComponent, canActivate: [UserGuard]},
-  {path: 'admin', component: AdminComponent, canActivate: [AdminGuard]},
-  {path: 'client', component: ClientComponent, canActivate: [UserGuard]},
+  { path: 'home', component: HomeComponent, canActivate: [UserGuard] },
+  { path: 'client', component: ClientComponent, canActivate: [UserGuard] },
 
-  { path: '', redirectTo: '/home', pathMatch: 'full'},
-  { path: '**', component: Page404Component}
+  { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
+  { path: 'register', component: RegisterComponent, canActivate: [AdminGuard] },
+  { path: 'payments', component: PaymentsComponent, canActivate: [AdminGuard]},
+
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', component: Page404Component },
 ];
 
 @NgModule({
