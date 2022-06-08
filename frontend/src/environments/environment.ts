@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL: 'http://localhost:5000/api',
+  API_URL: 'http://localhost:5000/api/',
   //DISCOUNTS FOR SALARY
   EPS: 65000, // THE COMPANY PAY SOME PERCENT AND THE EMPLOYE PAY OTHER PERCENT
   COMPENSATION_BOX: 65000, // THE COMPANY PAY SOME PERCENT AND THE EMPLOYE PAY OTHER PERCENT

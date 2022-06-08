@@ -1,0 +1,76 @@
+<section class="mt-4">
+  <div class="d-flex justify-content-around py-3">
+    <a class="" (click)="readyToPay()">
+      <div class="card border-green-dark mx-3 p-3" style="width: 18rem">
+        <h4 class="text-green-dark text-center m-0">Generar Nominas</h4>
+      </div>
+    </a>
+
+    <a class="" (click)="payDay()">
+      <div class="card border-green-dark mx-3 p-3" style="width: 18rem">
+        <h4 class="text-green-dark text-center m-0">Pagar</h4>
+      </div>
+    </a>
+  </div>
+
+  <div class="container-fluid d-flex flex-wrap justify-content-center">
+    <div class="shadow w-100 rounded p-4 m-2">
+      <table class="table table-hover">
+        <thead>
+          <tr class="text-center">
+            <th scope="col">Estado</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Documento</th>
+            <th scope="col">Salario</th>
+            <th scope="col">ARL</th>
+            <th scope="col">Pago</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody class="text-center">
+          <tr *ngFor="let user of userService.listUsers.users">
+            <td *ngIf="user.isActive">
+              <b class="px-3 py-1 bg-success text-white rounded-pill">Activo</b>
+            </td>
+            <td *ngIf="!user.isActive">
+              <b class="px-3 py-1 bg-danger text-white rounded-pill"
+                >Inactivo</b
+              >
+            </td>
+            <td>{{ user.name + " " + user.lastname }}</td>
+            <td>{{ user.document }}</td>
+            <td>{{ userService.numberSeparators(user.salary) }}</td>
+            <td>{{ user.arlType }}</td>
+            <td *ngIf="user.paymentState === 'payed' && user.isActive === true">
+              <b class="px-3 py-1 bg-success text-white rounded-pill">Pagado</b>
+            </td>
+            <td *ngIf="user.paymentState === 'ready' && user.isActive === true">
+              <b class="px-3 py-1 bg-warning text-white rounded-pill"
+                >Pendiente</b
+              >
+            </td>
+            <td *ngIf="user.isActive === false">
+              <b class="px-3 py-1 bg-secondary text-white rounded-pill"
+                >No Vinculado</b
+              >
+            </td>
+            <td>
+              <a class="me-4 text-green-dark" href="{{ '/user/' + user._id }}">
+                <span class="material-icons">visibility</span>
+              </a>
+              <a class="me-4 text-warning" href="{{ '/register/' + user._id }}">
+                <span class="material-icons">edit</span>
+              </a>
+              <a class="me-4 text-success" (click)="activeUser(user._id)">
+                <span class="material-icons"> face </span>
+              </a>
+              <a class="me-4 text-danger" (click)="deactiveUser(user._id)">
+                <span class="material-icons"> face_retouching_off </span>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

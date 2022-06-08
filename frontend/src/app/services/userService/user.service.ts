@@ -10,9 +10,10 @@ import jwtDecode from 'jwt-decode';
 })
 export class UserService {
 
-  slectedUser: User
+  listUsers: any
+  slectedUser: any
   //url_api = 'http://localhost:5000/api/user'
-  url_api = `${environment.API_URL}/user`
+  url_api = `${environment.API_URL}`
 
   constructor(private http: HttpClient, private router: Router) {
     this.slectedUser = new User()
@@ -27,7 +28,7 @@ export class UserService {
   */
 
   login(credentials: any){
-    return this.http.post(`${this.url_api}/login`, credentials)
+    return this.http.post(`${this.url_api}user/login`, credentials)
   }
 
   /*
@@ -39,7 +40,27 @@ export class UserService {
   }
   */
   register(formUser: any){
-    return this.http.post(`${this.url_api}/create-user`, formUser)
+    return this.http.post(`${this.url_api}user/create-user`, formUser)
+  }
+
+  updateUser(id: string, formUser: any){
+    return this.http.post(`${this.url_api}user/update-user/${id}`, formUser)
+  }
+
+  getUsersByFilter(filter: string) {
+    return this.http.get(`http://localhost:5000/api/payments/getByFilter?filter=${filter}`)
+  }
+
+  getOneUser(id: string) {
+    return this.http.get(`http://localhost:5000/api/user/get-one-user/${id}`)
+  }
+
+  activateUser(id: string){
+    return this.http.get(`${this.url_api}user/activate/${id}`)
+  }
+  
+  deactivateUser(id: string){
+    return this.http.get(`${this.url_api}user/deactivate/${id}`)
   }
 
   loggedIn(){
@@ -100,6 +121,13 @@ export class UserService {
     return 
   }
 
+  readyToPay(){
+    return this.http.get(`http://localhost:5000/api/payments/generate`)
+  }
+
+  payDay(){
+    return this.http.get(`http://localhost:5000/api/payments/payEmployes`)
+  }
 }
 
 

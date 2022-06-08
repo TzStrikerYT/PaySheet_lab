@@ -12,7 +12,8 @@ import { HomeComponent } from './components/home/home.component';
 import { Page404Component } from './components/page404/page404.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ClientComponent } from './components/client/client.component';
-import { PaymentsComponent } from './componets/payments/payments.component';
+import { NominasComponent } from './components/nominas/nominas.component';
+import { UserViewComponent } from './components/user-view/user-view.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PaymentsComponent } from './componets/payments/payments.component';
     Page404Component,
     AdminComponent,
     ClientComponent,
-    PaymentsComponent
+    NominasComponent,
+    UserViewComponent
   ],
   imports: [
     BrowserModule,

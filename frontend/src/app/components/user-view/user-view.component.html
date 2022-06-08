@@ -1,0 +1,62 @@
+<section class="mt-4">
+    <div class="container-fluid d-flex flex-wrap justify-content-center">
+      <div class="shadow w-100 rounded p-4 m-2">
+        <div>
+          <h4 class="text-green-dark">{{userInfo.name + ' ' + userInfo.lastname}}</h4>
+          <hr class="text-green-dark" />
+  
+          <div class="">
+            <div class="d-flex">
+              Estado:
+              <div
+              *ngIf="userInfo.isActive"
+                class="rounded-pill bg-success text-center text-white mx-3 px-3"
+              >
+                <b>Activo</b>
+              </div>
+              <div
+              *ngIf="!userInfo.isActive"
+                class="rounded-pill bg-danger text-center text-white mx-3 px-3"
+              >
+                <b>Inactivo</b>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="d-flex justify-content-around py-3">
+          <div class="card border-green-dark mx-3 p-3" style="width: 18rem">
+            <h4 class="text-green-dark text-center m-0">Salario</h4>
+            <hr />
+  
+            <div>
+              <p><b>Salario Neto: </b>{{userService.numberSeparators(userInfo.salary)}}</p>
+              <p><b>Salario Bruto: </b>{{userService.bruteSalary(userInfo.salary, userInfo.arlType)}}</p>
+            </div>
+          </div>
+          <div class="card border-green-dark mx-3 p-3" style="width: 18rem">
+            <h4 class="text-green-dark text-center m-0">ARL</h4>
+            <hr />
+            <div>
+              <p><b>Nombre: </b>{{userInfo.compensationBox}}</p>
+              <p><b>Tipo: </b>{{userInfo.arlType}}</p>
+              <p><b>Descuento: </b>{{userService.getArlValue(userInfo.arlType)}}</p>
+            </div>
+          </div>
+          <div class="card border-green-dark mx-3 p-3" style="width: 18rem">
+            <h4 class="text-green-dark text-center m-0">EPS</h4>
+            <hr />
+            <p><b>Nombre: </b>{{userInfo.eps}}</p>
+            <p><b>Descuento: </b>{{userService.numberSeparators(epsValue)}}</p>
+          </div>
+          <div class="card border-green-dark mx-3 p-3" style="width: 18rem">
+            <h4 class="text-green-dark text-center m-0">Caja de compensación</h4>
+            <hr />
+            <p><b>Nombre: </b>{{userInfo.compensationBox}}</p>
+            <p><b>Descuento: </b>{{userService.numberSeparators(boxValue)}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

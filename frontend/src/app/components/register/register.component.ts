@@ -10,9 +10,17 @@ import Swal from 'sweetalert2';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
+  userId = window.location.pathname.split('/')[2] || '';
+
   constructor(public userService: UserService, public router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.userId !== '') {
+      this.userService.getOneUser(this.userId).subscribe((res) => {
+        this.userService.slectedUser = res;
+      });
+    }
+  }
 
   register(form: NgForm) {
     const {
@@ -62,7 +70,7 @@ export class RegisterComponent implements OnInit {
         text: 'Todos los campos son requeridos',
         showConfirmButton: true,
       });
-      return 
+      return;
     }
 
     if (password !== confirmPassword) {
@@ -78,38 +86,77 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    this.userService.register({
-      email,
-      name,
-      lastname,
-      document,
-      salary,
-      arlType,
-      compensationBox,
-      password,
-      phone,
-      username,
-      confirmPassword,
-    }).subscribe(
-      (data) => {
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          text: `Usuario creado correctamente`,
-          showConfirmButton: true,
-        });
-        form.reset()
-      },
-      (err) => Swal.fire({
-        position: 'center',
-        icon: 'error',
-        text: 'El usuario no se ha creado',
-        showConfirmButton: true,
-      })
-    )
+    if (this.userId !== '') {
+      this.userService
+        .updateUser(this.userId, {
+          email,
+          name,
+          lastname,
+          document,
+          salary,
+          arlType,
+          compensationBox,
+          password,
+          phone,
+          username,
+          confirmPassword,
+        })
+        .subscribe(
+          (data) => {
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              text: `Usuario Actualizado correctamente`,
+              showConfirmButton: true,
+            });
+            form.reset();
+          },
+          (err) =>
+            Swal.fire({
+              position: 'center',
+              icon: 'error',
+              text: 'El usuario no se ha Actuaizado',
+              showConfirmButton: true,
+            })
+        );
+        return;
+    }
+
+    this.userService
+        .register({
+          email,
+          name,
+          lastname,
+          document,
+          salary,
+          arlType,
+          compensationBox,
+          password,
+          phone,
+          username,
+          confirmPassword,
+        })
+        .subscribe(
+          (data) => {
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              text: `Usuario creado correctamente`,
+              showConfirmButton: true,
+            });
+            form.reset();
+          },
+          (err) =>
+            Swal.fire({
+              position: 'center',
+              icon: 'error',
+              text: 'El usuario no se ha creado',
+              showConfirmButton: true,
+            })
+        );
 
     //this.router.navigate(['/login'])
-    
+
     return;
   }
 }

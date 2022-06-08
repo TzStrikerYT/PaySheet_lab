@@ -8,7 +8,8 @@ import { Page404Component } from './components/page404/page404.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UserGuard } from './user.guard';
 import { AdminGuard } from './admin.guard';
-import { PaymentsComponent } from './componets/payments/payments.component';
+import { NominasComponent } from './components/nominas/nominas.component';
+import { UserViewComponent } from './components/user-view/user-view.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -17,7 +18,9 @@ const routes: Routes = [
 
   { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [AdminGuard] },
-  { path: 'payments', component: PaymentsComponent, canActivate: [AdminGuard]},
+  { path: 'register/:id', component: RegisterComponent, canActivate: [AdminGuard] },
+  { path: 'nominas', component: NominasComponent, canActivate: [AdminGuard] },
+  { path: 'user/:id', component: UserViewComponent, canActivate: [AdminGuard] },
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: Page404Component },
