@@ -8,7 +8,7 @@ const auth = require("../middlewares/auth")
 
 router.get("/generate", paymentsControllers.generatePayments)
 router.get("/payEmployes", paymentsControllers.payEmployes)
-router.get('/getByFilter/:filter', paymentsControllers.getEmployesByfilter)
+router.get('/getByFilter', paymentsControllers.getEmployesByfilter)
 
 // router.get("/get-products", /*auth,*/ productsControllers.getProducts);
 // router.post("/create-product", auth, productsControllers.createProducts);

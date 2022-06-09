@@ -13,15 +13,13 @@ const getUsers = async (req, res) => {
 };
 
 const getOneUser = async (req, res) => {
-  const friday = "friday";
   try {
     const id = req.params.userId;
     const user = await User.findById(id);
-    res.status(200).json(user ? user : "El producto no existe");
+    res.status(200).json(user);
   } catch (error) {
     res.status(200).json({ msj: "Error al consultar el id", error });
   }
-  friday = "saturday";
 };
 
 // Crear un producto en la base de datos
@@ -91,6 +89,34 @@ const updateUsers = async (req, res) => {
     res.status(201).json(updated);
   } catch (error) {
     res.status(201).json({ msj: "Actualizacion fallida", error });
+  }
+};
+
+const activeUser = async (req, res) => {
+  let id = req.params.id
+  try {
+    const user = await User.findByIdAndUpdate(
+      id,
+      { $set: { isActive: true } }
+    );
+    res.status(200).json({ msg: "Usuario activado correctamente" });
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ msj: "Error", error });
+  }
+};
+
+const deactiveUser = async (req, res) => {
+  let id = req.params.id
+  try {
+    const user = await User.findByIdAndUpdate(
+      id,
+      { $set: { isActive: false } }
+    );
+    res.status(200).json({ msg: "Usuario desactivado correctamente" });
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ msj: "Error", error });
   }
 };
 
@@ -174,4 +200,6 @@ module.exports = {
   deleteUser,
   login,
   validateEmail,
+  activeUser,
+  deactiveUser
 };

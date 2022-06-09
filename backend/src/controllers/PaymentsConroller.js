@@ -38,18 +38,22 @@ const payEmployes = async (req, res) => {
 
 const getEmployesByfilter = async (req, res) => {
   try {
-    const filter = req.params.filter;
-    let users;
+    const filter = req.query.filter || null;
 
     if (filter === "ready") {
-      users = await User.find({$and: [{paymentState: 'ready'}, {isActive: true}]})
+      const users = await User.find({$and: [{paymentState: 'ready'}, {isActive: true}]})
+      return res.status(200).json({ users });
     }
 
     if (filter === "payed") {
-      users = await User.find({$and: [{paymentState: 'payed'}, {isActive: true}]});
+      const users = await User.find({$and: [{paymentState: 'payed'}, {isActive: true}]});
+      return res.status(200).json({ users });
     }
 
-    res.status(200).json({ users });
+    const users = await User.find()
+    return res.status(200).json({ users });
+
+    
   } catch (error) {
       console.log(error)
     res.status(400).json({ error });
@@ -92,5 +96,5 @@ const getEmployesByfilter = async (req, res) => {
 module.exports = {
   generatePayments,
   payEmployes,
-  getEmployesByfilter,
+  getEmployesByfilter
 };
